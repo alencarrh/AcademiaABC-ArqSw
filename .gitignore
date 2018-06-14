@@ -1,0 +1,27 @@
+######### BACKEND .GITIGNORE
+## Java ##
+back/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.vscode
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+back/nbproject/private/
+back/build/
+back/nbbuild/
+back/dist/
+back/nbdist/
+.nb-gradle/
+back/nbactions.xml
