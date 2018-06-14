@@ -1,0 +1,19 @@
+matrix:
+  include:
+    - language: java
+      jdk: oraclejdk8
+      before_script:
+        - cd back
+      script:
+        - mvn clean install
+      before_cache:
+        - rm -fr $HOME/.m2
+      cache:
+        directories:
+          - $HOME/.m2
+      after_success:
+        bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    on_success: never
