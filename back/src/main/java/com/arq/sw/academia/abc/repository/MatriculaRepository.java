@@ -7,4 +7,6 @@ public interface MatriculaRepository extends Repository<MatriculaEntity, Long> {
 
     MatriculaEntity save(MatriculaEntity matricula);
 
+    MatriculaEntity findByUsuarioCpf(String cpf);
+
 }

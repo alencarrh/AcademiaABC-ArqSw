@@ -47,13 +47,13 @@ public class MatriculaEntity implements Serializable {
     private Boolean cancelada;
 
     @Column(nullable = false)
-    private Boolean trancada;
+    private Boolean bloqueada;
 
     @Column
     private LocalDateTime dataCancelamento;
 
     @Column
-    private LocalDateTime dataTrancada;
+    private LocalDateTime dataBloqueio;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "usuario_id")
@@ -63,7 +63,7 @@ public class MatriculaEntity implements Serializable {
         return MatriculaEntity.builder()
                               .usuario(usuario)
                               .dataCadastro(LocalDateTime.now())
-                              .trancada(Boolean.FALSE)
+                              .bloqueada(Boolean.FALSE)
                               .cancelada(Boolean.FALSE)
                               .build();
     }

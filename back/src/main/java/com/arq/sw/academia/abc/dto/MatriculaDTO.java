@@ -18,8 +18,8 @@ public class MatriculaDTO implements Serializable {
     private final LocalDateTime dataCadastro;
     private final Boolean cancelada;
     private final LocalDateTime dataCancelamento;
-    private final Boolean trancada;
-    private final LocalDateTime dataTrancada;
+    private final Boolean bloqueada;
+    private final LocalDateTime dataBloqueio;
     private final UsuarioDTO usuario;
 
 }

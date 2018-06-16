@@ -23,9 +23,9 @@ public class MatriculaEntityMapper implements Mapper<MatriculaDTO, MatriculaEnti
                               .id(from.getId())
                               .dataCadastro(from.getDataCadastro())
                               .dataCancelamento(from.getDataCancelamento())
-                              .dataTrancada(from.getDataTrancada())
+                              .dataBloqueio(from.getDataBloqueio())
                               .cancelada(from.getCancelada())
-                              .trancada(from.getTrancada())
+                              .bloqueada(from.getBloqueada())
                               .usuario(usuarioMapper.map(from.getUsuario()))
                               .build();
     }

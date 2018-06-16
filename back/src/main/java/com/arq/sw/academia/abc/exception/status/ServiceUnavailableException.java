@@ -1,5 +1,9 @@
 package com.arq.sw.academia.abc.exception.status;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
 public class ServiceUnavailableException extends HttpStatusException {
 
     private static final long serialVersionUID = -1280594911580488219L;
