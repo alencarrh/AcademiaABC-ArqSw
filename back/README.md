@@ -1,4 +1,4 @@
-# Academia ABC - Dev3
+# Academia ABC - Arquitetura de Software
 
 | Branch | Build | Coverage |
 | ------------- |:-------------:|:-------------:|
