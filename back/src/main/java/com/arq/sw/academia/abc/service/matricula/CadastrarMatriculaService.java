@@ -5,6 +5,8 @@ import com.arq.sw.academia.abc.dto.request.matricula.CadastrarMatriculaRequest;
 import com.arq.sw.academia.abc.entity.MatriculaEntity;
 import com.arq.sw.academia.abc.entity.UsuarioEntity;
 import com.arq.sw.academia.abc.exception.status.BadRequestException;
+import com.arq.sw.academia.abc.exception.status.MethodNotAllowedException;
+import com.arq.sw.academia.abc.exception.status.PreconditionFailedException;
 import com.arq.sw.academia.abc.mapper.dto.MatriculaDTOMapper;
 import com.arq.sw.academia.abc.repository.MatriculaRepository;
 import com.arq.sw.academia.abc.repository.UsuarioRepository;
@@ -74,6 +76,9 @@ public class CadastrarMatriculaService {
         }
         if(isNull(request.getDataNascimento())) {
             throw new BadRequestException("Data de Nascimento é obrigatório e não pode ser nulo.");
+        }
+        if(ofNullable(matriculaRepository.findByUsuarioCpf(request.getCpf())).isPresent()){
+            throw new PreconditionFailedException("Matrícula já existente.");
         }
     }
 

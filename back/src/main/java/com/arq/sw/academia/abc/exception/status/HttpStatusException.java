@@ -11,6 +11,8 @@ import lombok.Getter;
 @Getter
 public abstract class HttpStatusException extends RuntimeException {
 
+    private static final long serialVersionUID = -2134691716833080281L;
+
     private Map<String, String> additionalInformation;
 
     public HttpStatusException() {
@@ -48,7 +50,7 @@ public abstract class HttpStatusException extends RuntimeException {
 
     public void addAdditionalInformation(final String key, final String value) {
 
-        if (isNull(additionalInformation)) {
+        if(isNull(additionalInformation)) {
             additionalInformation = new TreeMap<>();
         }
 
@@ -58,8 +60,7 @@ public abstract class HttpStatusException extends RuntimeException {
     public void addAdditionalInformation(final Map<String, String> additionalInformation) {
 
         ofNullable(additionalInformation)
-                .ifPresent(map ->
-                                   map.forEach((key, value) -> addAdditionalInformation(key, value)));
+                .ifPresent(map -> map.forEach((key, value) -> addAdditionalInformation(key, value)));
     }
 
     public abstract int getStatusCode();

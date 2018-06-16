@@ -3,8 +3,11 @@ package com.arq.sw.academia.abc.exception.status;
 import java.util.Map;
 
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 @NoArgsConstructor
+@ResponseStatus(HttpStatus.FORBIDDEN)
 public class ForbiddenException extends HttpStatusException {
 
     private static final long serialVersionUID = -495404399047981790L;

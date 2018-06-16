@@ -19,4 +19,33 @@ public interface MatriculaControllerContract {
     })
     public MatriculaDTO cadastrar(@ApiParam(value = "Dados da matrícula", required = true) CadastrarMatriculaRequest request);
 
+    @ApiOperation(
+            value = "Busca os dados de matrícula do cliente",
+            notes = "Busca utilizando o CPF."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Dados da matrícula"),
+            @ApiResponse(code = 400, message = "Parametros inválidos.")
+    })
+    public MatriculaDTO consultar(@ApiParam(value = "CPF do cliente", required = true) String cpf);
+
+    @ApiOperation(
+            value = "Efetua o (des)cancelamento da matrícula do cliente.",
+            notes = "Caso a matricula já esteja cancelada, faz o descancelamento."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Matrícula (des)cancelada com sucesso."),
+            @ApiResponse(code = 400, message = "Parametros inválidos.")
+    })
+    public void cancelar(@ApiParam(value = "CPF do cliente", required = true) String cpf);
+
+    @ApiOperation(
+            value = "Bloqueia a matrícula do cliente.",
+            notes = "Caso a matrícula do cliente já esteja bloqueada faz o desbloqueio."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Matrícula (des)bloqueada com sucesso."),
+            @ApiResponse(code = 400, message = "Parametros inválidos.")
+    })
+    public void bloquear(@ApiParam(value = "CPF do cliente", required = true) String cpf);
 }
