@@ -2,8 +2,8 @@
 
 | Branch | Build | Coverage |
 | ------------- |:-------------:|:-------------:|
-| master | [![Build Status](https://travis-ci.org/alencarrh/AcademiaABC-Dev3.svg?branch=master)](https://travis-ci.org/alencarrh/AcademiaABC-Dev3) | [![codecov](https://codecov.io/gh/alencarrh/AcademiaABC-Dev3/branch/master/graph/badge.svg)](https://codecov.io/gh/alencarrh/AcademiaABC-Dev3)
-| develop | [![Build Status](https://travis-ci.org/alencarrh/AcademiaABC-Dev3.svg?branch=develop)](https://travis-ci.org/alencarrh/AcademiaABC-Dev3) | [![codecov](https://codecov.io/gh/alencarrh/AcademiaABC-Dev3/branch/develop/graph/badge.svg)](https://codecov.io/gh/alencarrh/AcademiaABC-Dev3)
+| master | [![Build Status](https://travis-ci.org/alencarrh/AcademiaABC-ArqSw.svg?branch=master)](https://travis-ci.org/alencarrh/AcademiaABC-ArqSw) | [![codecov](https://codecov.io/gh/alencarrh/AcademiaABC-ArqSw/branch/master/graph/badge.svg)](https://codecov.io/gh/alencarrh/AcademiaABC-ArqSw)
+| develop | [![Build Status](https://travis-ci.org/alencarrh/AcademiaABC-ArqSw.svg?branch=develop)](https://travis-ci.org/alencarrh/AcademiaABC-ArqSw) | [![codecov](https://codecov.io/gh/alencarrh/AcademiaABC-ArqSw/branch/develop/graph/badge.svg)](https://codecov.io/gh/alencarrh/AcademiaABC-ArqSw)
 
 
 ## Ambiente de Desenvolvimento
