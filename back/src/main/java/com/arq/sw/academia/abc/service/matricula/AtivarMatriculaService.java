@@ -33,7 +33,7 @@ public class AtivarMatriculaService {
 
     public MatriculaDTO ativar(final String cpf) {
         if(isEmpty(cpf)) {
-            throw new BadRequestException("CPF é obrigatório e não pode ser nulo.");
+            BadRequestException.throwNew("CPF é obrigatório e não pode ser nulo.");
         }
 
         final Optional<UsuarioEntity> optionalUsuario = ofNullable(usuarioRepository.findByCpf(cpf));

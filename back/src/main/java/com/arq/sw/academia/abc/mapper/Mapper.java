@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
+import static java.util.Collections.emptyList;
+import static java.util.Optional.ofNullable;
 
 public interface Mapper<T, R> extends Function<T, R> {
 
@@ -15,10 +16,7 @@ public interface Mapper<T, R> extends Function<T, R> {
     }
 
     default List<R> map(List<T> t) {
-        if(isNull(t)) {
-            return null;
-        }
-        return t.stream().map(this).collect(Collectors.toList());
+        return ofNullable(t).orElse(emptyList()).stream().map(this).collect(Collectors.toList());
     }
 
 }

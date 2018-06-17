@@ -44,4 +44,8 @@ public class PreconditionFailedException extends HttpStatusException {
     public int getStatusCode() {
         return 412;
     }
+
+    public static void throwNew(String message) {
+        throw new PreconditionFailedException(message);
+    }
 }

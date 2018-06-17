@@ -1,12 +1,9 @@
 package com.arq.sw.academia.abc.repository;
 
-
 import com.arq.sw.academia.abc.entity.UsuarioEntity;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UsuarioRepository extends Repository<UsuarioEntity, Long> {
-
-    UsuarioEntity save(UsuarioEntity usuario);
+public interface UsuarioRepository extends CrudRepository<UsuarioEntity, Long> {
 
     UsuarioEntity findByCpf(String cpf);
 
