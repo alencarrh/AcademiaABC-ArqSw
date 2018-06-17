@@ -1,10 +1,10 @@
 package com.arq.sw.academia.abc.exception.status;
 
-import java.util.Map;
-
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.Map;
 
 @NoArgsConstructor
 @ResponseStatus(HttpStatus.FORBIDDEN)

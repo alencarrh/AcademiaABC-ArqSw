@@ -1,12 +1,12 @@
 package com.arq.sw.academia.abc.exception.status;
 
-import static java.util.Objects.isNull;
-import static java.util.Optional.ofNullable;
+import lombok.Getter;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import lombok.Getter;
+import static java.util.Objects.isNull;
+import static java.util.Optional.ofNullable;
 
 @Getter
 public abstract class HttpStatusException extends RuntimeException {
@@ -64,4 +64,5 @@ public abstract class HttpStatusException extends RuntimeException {
     }
 
     public abstract int getStatusCode();
+
 }

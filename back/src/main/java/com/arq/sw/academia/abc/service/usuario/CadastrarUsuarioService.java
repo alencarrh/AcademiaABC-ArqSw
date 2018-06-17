@@ -21,7 +21,7 @@ public class CadastrarUsuarioService {
     @Autowired
     private UsuarioDTOMapper mapper;
 
-    public UsuarioDTO cadastrar(CadastrarUsuarioRequest request) {
+    public UsuarioDTO cadastrar(final CadastrarUsuarioRequest request) {
         validar(request);
         UsuarioEntity usuario = UsuarioEntity.builder()
                                              .nome(request.getNome())

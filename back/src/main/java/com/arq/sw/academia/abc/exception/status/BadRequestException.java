@@ -45,4 +45,8 @@ public class BadRequestException extends HttpStatusException {
     public int getStatusCode() {
         return 400;
     }
+
+    public static void throwNew(String message) {
+        throw new BadRequestException(message);
+    }
 }

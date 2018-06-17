@@ -23,4 +23,8 @@ public class NotFoundException extends HttpStatusException {
     public int getStatusCode() {
         return 404;
     }
+
+    public static void throwNew(String message) {
+        throw new NotFoundException(message);
+    }
 }
