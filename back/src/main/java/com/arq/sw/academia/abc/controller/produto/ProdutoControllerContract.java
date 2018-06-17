@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import java.util.List;
+
 public interface ProdutoControllerContract {
 
     @ApiOperation(
@@ -50,4 +52,12 @@ public interface ProdutoControllerContract {
             @ApiResponse(code = 400, message = "Parametros inválidos.")
     })
     public ProdutoDTO remover(@ApiParam(value = "ID do produto", required = true) Long id);
+
+    @ApiOperation(
+            value = "Lista todos os produtos cadastrados"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Lista de produtos")
+    })
+    public List<ProdutoDTO> listar();
 }
