@@ -1,0 +1,10 @@
+.tag {
+  padding: 3px 10px;
+  border-radius: 60px;
+  font-size: 12px; }
+  .tag--primary {
+    background: #2cc55b;
+    color: #ffffff; }
+  .tag--danger {
+    background: #e0883c;
+    color: #ffffff; }

@@ -1,0 +1,32 @@
+//==========================================
+// Color picker styles
+//==========================================
+@import "../../../styles/_variables";
+
+.form-group .input-group .color-picker {
+  display: flex;
+  flex-direction: row-reverse;
+
+  &__picker {
+    padding: 0;
+    width: 35px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 2px;
+
+    &:focus {
+      border-color: $gray5;
+    }
+  }
+
+  &__input {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:focus + input{
+      border-color: $primary-color;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@import "../../../styles/_variables";
+
+.fieldset {
+  border: 1px solid $gray5;
+  padding-bottom: 20px;
+
+  legend {
+    background: $white;
+    color: $purple5;
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid $gray5;
+    margin: 30px 0;
+  }
+}
+
+.form-group {
+  justify-content: space-between;
+  display: flex;
+  margin: 10px 0;
+
+  .input-group {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 20px;
+    flex: 1;
+    max-width: calc(50% - 40px);
+
+    label, input, select {
+      display: block;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    label {
+      font-weight: 400;
+    }
+
+    input, select {
+      height: 35px;
+      background: #fff;
+      padding: 0 15px;
+    }
+
+    .message {
+      color: #ff0000;
+    }
+
+    :not([required]) + label:after {
+      content: '- Opcional';
+      font-size: 10px;
+      opacity: .5;
+      margin-left: 4px;
+    }
+
+    select[multiple]:focus option:checked {
+      background: $purple5 linear-gradient(0deg, $purple5 0%, $purple5 100%);
+    }
+
+    select option {
+      padding: 5px 8px;
+    }
+
+    input, select {
+      border-radius: 3px;
+      border: 1px solid $gray5;
+      transition-duration: .2s;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+.form {
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+
+    button {
+      margin-left: 15px;
+    }
+  }
+
+  &__links {
+    margin-left: 15px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 15px;
+  }
+}

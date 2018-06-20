@@ -1,0 +1,16 @@
+.breadcrumb {
+  background: #e9ebf5;
+  order: 2;
+  padding: 20px 30px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #2b3643; }
+  .breadcrumb a {
+    color: #0a1967;
+    opacity: .4; }
+    .breadcrumb a:hover {
+      cursor: pointer;
+      opacity: .5; }
+    .breadcrumb a:after {
+      content: '/';
+      margin: 0 8px; }

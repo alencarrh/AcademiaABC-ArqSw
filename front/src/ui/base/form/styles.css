@@ -1,0 +1,63 @@
+.fieldset {
+  border: 1px solid #dddddd;
+  padding-bottom: 20px; }
+  .fieldset legend {
+    background: #ffffff;
+    color: #8680d0;
+    padding: 10px;
+    font-size: 20px; }
+  .fieldset hr {
+    border: none;
+    border-bottom: 1px solid #dddddd;
+    margin: 30px 0; }
+
+.form-group {
+  justify-content: space-between;
+  display: flex;
+  margin: 10px 0; }
+  .form-group .input-group {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 20px;
+    flex: 1;
+    max-width: calc(50% - 40px); }
+    .form-group .input-group label, .form-group .input-group input, .form-group .input-group select {
+      display: block;
+      margin: 8px 0;
+      width: 100%; }
+    .form-group .input-group label {
+      font-weight: 400; }
+    .form-group .input-group input, .form-group .input-group select {
+      height: 35px;
+      background: #fff;
+      padding: 0 15px; }
+    .form-group .input-group .message {
+      color: #ff0000; }
+    .form-group .input-group :not([required]) + label:after {
+      content: '- Opcional';
+      font-size: 10px;
+      opacity: .5;
+      margin-left: 4px; }
+    .form-group .input-group select[multiple]:focus option:checked {
+      background: #8680d0 linear-gradient(0deg, #8680d0 0%, #8680d0 100%); }
+    .form-group .input-group select option {
+      padding: 5px 8px; }
+    .form-group .input-group input, .form-group .input-group select {
+      border-radius: 3px;
+      border: 1px solid #dddddd;
+      transition-duration: .2s; }
+      .form-group .input-group input:focus, .form-group .input-group select:focus {
+        border-color: #6b608c; }
+
+.form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px; }
+  .form__actions button {
+    margin-left: 15px; }
+
+.form__links {
+  margin-left: 15px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 15px; }

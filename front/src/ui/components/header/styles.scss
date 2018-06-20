@@ -1,0 +1,24 @@
+//==========================================
+// Header Styles
+//==========================================
+@import "../../../styles/_variables";
+
+.header {
+	background: $header-color;
+	height: $header-height;
+	box-shadow: -1px 4px 15px -4px rgba($blue2, .1);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0 20px;
+	width: 100%;
+	position: fixed;
+  z-index: 9;
+
+	&__actions {
+		position: absolute;
+		right: 0;
+		top: 10px;
+	}
+}

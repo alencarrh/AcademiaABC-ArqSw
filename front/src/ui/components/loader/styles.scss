@@ -1,0 +1,23 @@
+//==========================================
+// Loader Styles
+//==========================================
+@import "../../../styles/_variables";
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+
+  &__circle {
+    width: 100px;
+    height: 100px;
+    border-top: 3px solid $primary-color;
+    border-radius: 50%;
+    animation: loaderRotate 1.5s ease-out infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes loaderRotate {
+  to { transform: rotate(360deg) }
+}
