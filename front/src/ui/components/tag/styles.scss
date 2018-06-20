@@ -1,0 +1,20 @@
+//==========================================
+// Tag Styles
+//==========================================
+@import "../../../styles/_variables";
+
+.tag {
+  padding: 3px 10px;
+  border-radius: 60px;
+  font-size: 12px;
+
+  &--primary {
+    background: $green;
+    color: $white;
+  }
+
+  &--danger {
+    background: $orange;
+    color: $white;
+  }
+}

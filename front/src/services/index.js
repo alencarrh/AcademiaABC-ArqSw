@@ -1,0 +1,6 @@
+export { AmRouter } from './router'
+export { LocalStorageService } from './local-storage'
+export { ClienteService } from './cliente'
+export { ProdutoService } from './produto'
+export { UserService } from './user-service'
+export { ToastrService } from './toastr-service'

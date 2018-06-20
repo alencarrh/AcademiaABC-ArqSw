@@ -1,0 +1,136 @@
+//==========================================
+// Sidenav Styles
+//==========================================
+@import "../../../styles/_variables";
+
+.sidebar {
+  position: fixed;
+  z-index: 10;
+  width: $sidebar-width;
+  height: 100vh;
+  background: $sidebar-color;
+
+  &__user-info {
+    height: $header-height;
+    background: darken($sidebar-color, 5);
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+
+    &__logout {
+      font-size: 10px;
+      margin-left: 5px;
+      cursor: pointer;
+      position: relative;
+      top: 1px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-right: 10px;
+    }
+  }
+
+  &__search {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &__input {
+      width: 75%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba($white, .2);
+      padding: 8px 10px;
+      transition-duration: .1s;
+
+      &:focus {
+        border-color: rgba($white, .4);
+      }
+    }
+  }
+
+  &__main-menu {
+    margin-top: 20px;
+    padding: 0;
+    min-height: calc(100vh - 260px);
+
+    &__item {
+      $root: &;
+
+      transition-duration: .2s;
+      user-select: none;
+      list-style: none;
+
+      a {
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: linear-gradient(100deg, transparent 0%, lighten($sidebar-color, 1.8) 30%, transparent 60%);
+        animation: itemHover 2s linear infinite;
+      }
+
+      &:active {
+        background: lighten($sidebar-color, 2);
+      }
+
+      & svg {
+        fill: $gray10;
+        width: 20px;
+        display: inline-block;
+      }
+
+      &__link {
+        display: inline-block;
+        padding: 15px 10px;
+        color: $gray10;
+      }
+
+      &--active {
+        box-shadow: inset -50px 0 50px -40px rgba($purple3, .5);
+
+        svg {
+          fill: $purple5;
+        }
+
+        #{$root}__link {
+          color: $purple5;
+        }
+      }
+
+    }
+  }
+
+  &__footer {
+    font-size: 10px;
+    text-align: center;
+    color: rgba($white, .4);
+
+    &__logo img {
+      fill: $white;
+      display: block;
+      text-align: center;
+      width: 50%;
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+@keyframes itemHover {
+  to { background-position: $sidebar-width; }
+}

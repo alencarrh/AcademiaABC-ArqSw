@@ -1,0 +1,89 @@
+@import "../../../styles/_variables";
+
+.list {
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+
+    .input-search {
+      border: none;
+      background-color: $gray6;
+      width: 300px;
+      height: 40px;
+      background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUyLjk2NiA1Mi45NjYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUyLjk2NiA1Mi45NjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPHBhdGggZD0iTTUxLjcwNCw1MS4yNzNMMzYuODQ1LDM1LjgyYzMuNzktMy44MDEsNi4xMzgtOS4wNDEsNi4xMzgtMTQuODJjMC0xMS41OC05LjQyLTIxLTIxLTIxcy0yMSw5LjQyLTIxLDIxczkuNDIsMjEsMjEsMjEgIGM1LjA4MywwLDkuNzQ4LTEuODE3LDEzLjM4NC00LjgzMmwxNC44OTUsMTUuNDkxYzAuMTk2LDAuMjA1LDAuNDU4LDAuMzA3LDAuNzIxLDAuMzA3YzAuMjUsMCwwLjQ5OS0wLjA5MywwLjY5My0wLjI3OSAgQzUyLjA3NCw1Mi4zMDQsNTIuMDg2LDUxLjY3MSw1MS43MDQsNTEuMjczeiBNMjEuOTgzLDQwYy0xMC40NzcsMC0xOS04LjUyMy0xOS0xOXM4LjUyMy0xOSwxOS0xOXMxOSw4LjUyMywxOSwxOSAgUzMyLjQ1OSw0MCwyMS45ODMsNDB6IiBmaWxsPSIjYTRhMmJiIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+      background-repeat: no-repeat;
+      background-position: center left 10px;
+      padding: 0 15px 0 35px;
+      border-radius: 3px;
+      border: 1px solid $gray2;
+      transition-duration: .2s;
+
+      &:focus {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 30px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        text-align: left;
+
+        th {
+          background: $gray14;
+          height: 50px;
+          padding: 0 15px;
+          color: $gray13;
+
+          &.list__content__table-action {
+            width: 120px;
+            text-align: center;
+          }
+        }
+      }
+
+      tbody {
+        tr:nth-child(odd) {
+          background: $gray8;
+        }
+
+        td {
+          padding: 0 15px;
+          height: 40px;
+
+          &.list__content__table-action {
+            text-align: center;
+
+            svg {
+              margin: 0 10px;
+              width: 20px;
+            }
+          }
+        }
+      }
+
+      tfoot {
+        tr td {
+          height: 50px;
+          text-align: right;
+          color: $gray9;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

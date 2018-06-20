@@ -1,0 +1,18 @@
+.form-group .input-group .color-picker {
+  display: flex;
+  flex-direction: row-reverse; }
+  .form-group .input-group .color-picker__picker {
+    padding: 0;
+    width: 35px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 2px; }
+    .form-group .input-group .color-picker__picker:focus {
+      border-color: #dddddd; }
+  .form-group .input-group .color-picker__input {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+    .form-group .input-group .color-picker__input:focus + input {
+      border-color: #6b608c; }

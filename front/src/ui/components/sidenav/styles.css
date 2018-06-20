@@ -1,0 +1,89 @@
+.sidebar {
+  position: fixed;
+  z-index: 10;
+  width: 250px;
+  height: 100vh;
+  background: #2c2e3e; }
+  .sidebar__user-info {
+    height: 65px;
+    background: #21232f;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; }
+    .sidebar__user-info__logout {
+      font-size: 10px;
+      margin-left: 5px;
+      cursor: pointer;
+      position: relative;
+      top: 1px; }
+      .sidebar__user-info__logout:hover {
+        text-decoration: underline; }
+    .sidebar__user-info__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-right: 10px; }
+  .sidebar__search {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+    .sidebar__search__input {
+      width: 75%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 10px;
+      transition-duration: .1s; }
+      .sidebar__search__input:focus {
+        border-color: rgba(255, 255, 255, 0.4); }
+  .sidebar__main-menu {
+    margin-top: 20px;
+    padding: 0;
+    min-height: calc(100vh - 260px); }
+    .sidebar__main-menu__item {
+      transition-duration: .2s;
+      user-select: none;
+      list-style: none; }
+      .sidebar__main-menu__item a {
+        display: flex;
+        align-items: center;
+        padding-left: 12px; }
+      .sidebar__main-menu__item:hover {
+        cursor: pointer;
+        background: linear-gradient(100deg, transparent 0%, #303243 30%, transparent 60%);
+        animation: itemHover 2s linear infinite; }
+      .sidebar__main-menu__item:active {
+        background: #303244; }
+      .sidebar__main-menu__item svg {
+        fill: #868aa8;
+        width: 20px;
+        display: inline-block; }
+      .sidebar__main-menu__item__link {
+        display: inline-block;
+        padding: 15px 10px;
+        color: #868aa8; }
+      .sidebar__main-menu__item--active {
+        box-shadow: inset -50px 0 50px -40px rgba(113, 106, 202, 0.5); }
+        .sidebar__main-menu__item--active svg {
+          fill: #8680d0; }
+        .sidebar__main-menu__item--active .sidebar__main-menu__item__link {
+          color: #8680d0; }
+  .sidebar__footer {
+    font-size: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4); }
+    .sidebar__footer__logo img {
+      fill: #ffffff;
+      display: block;
+      text-align: center;
+      width: 50%;
+      margin: 0 auto 20px; }
+
+@keyframes itemHover {
+  to {
+    background-position: 250px; } }
