@@ -18,10 +18,12 @@ import CheckedIcon from './images/checked'
 import WarningIcon from './images/warning'
 import ErrorIcon from './images/error'
 import SadIcon from './images/sad'
+import GiftIcon from './images/gift'
 
 export class AmImage {
 
   static ICONS = {
+    Gift: GiftIcon,
     Home: HomeIcon,
     Dashboard: DashboardIcon,
     Notification: AlertIcon,

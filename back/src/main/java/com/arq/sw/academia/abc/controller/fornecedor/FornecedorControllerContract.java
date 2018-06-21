@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import java.util.List;
+
 public interface FornecedorControllerContract {
 
     @ApiOperation(
@@ -50,4 +52,12 @@ public interface FornecedorControllerContract {
             @ApiResponse(code = 400, message = "Parametros inválidos.")
     })
     public FornecedorDTO remover(@ApiParam(value = "ID do fornecedor", required = true) Long id);
+
+    @ApiOperation(
+            value = "Lista todos os fornecedores cadastrados"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Lista de fornecedores")
+    })
+    public List<FornecedorDTO> listar();
 }

@@ -23,7 +23,7 @@ export class BaseService {
 
   save(object) {
     const saveAction = object.id ?
-      this.httpService.put(`${this.baseUrl}/${object.id}`, object) :
+      this.httpService.put(this.baseUrl, object) :
       this.httpService.post(this.baseUrl, object)
 
     return saveAction

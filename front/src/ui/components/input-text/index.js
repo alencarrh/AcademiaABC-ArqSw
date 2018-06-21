@@ -79,13 +79,17 @@ export class AmInputText extends Component {
   render() {
     return (
       <div className="input-group">
-        <span className="message">{this.state.message}</span>
+        {
+          !!this.state.message && <span className="message">{this.state.message}</span>
+        }
+
         <input
           required={this.props.required}
-          type="text"
+          type={this.props.type || 'text'}
           id={this.props.id}
           placeholder={this.props.placeholder}
           value={this.state.value}
+          disabled={this.props.disabled}
           onChange={e => this.onInputChange(e)}
           onBlur={e => this.validateRequired(e)}  />
         <label htmlFor={this.props.id}>{this.props.label}</label>

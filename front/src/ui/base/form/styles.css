@@ -20,7 +20,8 @@
     flex-direction: column-reverse;
     margin: 0 20px;
     flex: 1;
-    max-width: calc(50% - 40px); }
+    max-width: calc(50% - 40px);
+    position: relative; }
     .form-group .input-group label, .form-group .input-group input, .form-group .input-group select {
       display: block;
       margin: 8px 0;
@@ -32,7 +33,18 @@
       background: #fff;
       padding: 0 15px; }
     .form-group .input-group .message {
-      color: #ff0000; }
+      color: #ff0000;
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      opacity: 0;
+      animation: fadeIn .3s linear forwards; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
     .form-group .input-group :not([required]) + label:after {
       content: '- Opcional';
       font-size: 10px;

@@ -6,6 +6,7 @@ import com.arq.sw.academia.abc.dto.request.usuario.CadastrarUsuarioRequest;
 import com.arq.sw.academia.abc.service.usuario.AtualizarUsuarioService;
 import com.arq.sw.academia.abc.service.usuario.CadastrarUsuarioService;
 import com.arq.sw.academia.abc.service.usuario.ConsultarUsuarioService;
+import com.arq.sw.academia.abc.service.usuario.ListarUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/rest/usuario")
@@ -27,6 +30,9 @@ public class UsuarioController implements UsuarioControllerContract {
 
     @Autowired
     private ConsultarUsuarioService consultarUsuarioService;
+
+    @Autowired
+    private ListarUsuarioService listarUsuarioService;
 
     @Override
     @PostMapping
@@ -44,6 +50,12 @@ public class UsuarioController implements UsuarioControllerContract {
     @GetMapping("/{id}")
     public UsuarioDTO consultar(@PathVariable("id") Long id) {
         return consultarUsuarioService.consultar(id);
+    }
+
+    @Override
+    @GetMapping
+    public List<UsuarioDTO> listar() {
+        return listarUsuarioService.listar();
     }
 
 }

@@ -10,7 +10,6 @@ import {
   AmImage,
   AmButton,
   AmConfirmBalloon,
-  AmTag
 } from 'am-components'
 
 export class ProdutoList extends BaseList {
@@ -18,6 +17,7 @@ export class ProdutoList extends BaseList {
     super({
       pageTitle: 'Produtos',
       listTitle: 'Lista de Produtos',
+      totalCol: 7,
       searchAction: filterText => this.onSearchTextChanged(filterText),
       thead: () => this.onThead(),
       tbody: (object, key) => this.onTbody(object, key),
@@ -38,14 +38,14 @@ export class ProdutoList extends BaseList {
   */
 
   componentWillMount() {
-    this.getCampanhas()
+    this.getProdutos()
   }
 
   /*
     Data methods
   */
 
-  getCampanhas() {
+  getProdutos() {
     super.setIsLoading(true)
 
     this.produtoService.get()
@@ -113,9 +113,11 @@ export class ProdutoList extends BaseList {
     return(
       <tr>
         <th>Nome</th>
-        <th>Quantidade</th>
-        <th>Destaque</th>
+        <th>Descrição</th>
         <th>Preço</th>
+        <th>Qtd. Estoque</th>
+        <th>Tipo</th>
+        <th>Fornecedor</th>
         <th className="list__content__table-action">Ações</th>
       </tr>
     )
@@ -130,13 +132,11 @@ export class ProdutoList extends BaseList {
     return(
       <tr key={ key }>
         <td>{ produto.nome }</td>
-        <td>{ produto.titulo }</td>
-        <td>
-          <AmTag type={produto.status > 0 ? 'PRIMARY' : 'DANGER'}>
-            { produto.status ? 'Sim' : 'Não' }
-          </AmTag>
-        </td>
+        <td>{ produto.descricao }</td>
         <td>{ produto.preco }</td>
+        <td>{ produto.qtdEstoque }</td>
+        <td>{ produto.tipo }</td>
+        <td>{ produto.fornecedor.nome }</td>
         <td className="list__content__table-action">
           <Link to={link}>
             <AmButton variants="button--icon-table">{AmImage.ICONS.Edit}</AmButton>
@@ -157,7 +157,7 @@ export class ProdutoList extends BaseList {
   onTfoot() {
     return (
       <tr>
-        <td colSpan="5">Mostrando {this.state.produtosFiltrados.length} de {this.state.produtos.length } registros</td>
+        <td colSpan="7">Mostrando {this.state.produtosFiltrados.length} de {this.state.produtos.length } registros</td>
       </tr>
     )
   }
@@ -165,7 +165,7 @@ export class ProdutoList extends BaseList {
   onActions() {
     return(
       <div className="list__actions-buttons">
-        <Link to='/campanha/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo Produto</AmButton></Link>
+        <Link to='/produto/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo Produto</AmButton></Link>
       </div>
     )
   }

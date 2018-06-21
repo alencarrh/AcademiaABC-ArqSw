@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import java.util.List;
+
 public interface UsuarioControllerContract {
 
     @ApiOperation(
@@ -39,5 +41,13 @@ public interface UsuarioControllerContract {
             @ApiResponse(code = 400, message = "Parametros inválidos.")
     })
     public UsuarioDTO consultar(@ApiParam(value = "ID do usuário", required = true) Long id);
+
+    @ApiOperation(
+            value = "Lista todos os usuarios cadastrados"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Lista de usuarios")
+    })
+    public List<UsuarioDTO> listar();
 
 }

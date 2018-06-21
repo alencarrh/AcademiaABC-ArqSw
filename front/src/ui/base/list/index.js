@@ -6,11 +6,12 @@ import {
 
 export class BaseList extends Component {
 
-  constructor({pageTitle, listTitle, searchPlaceholder, listActions, searchAction, thead, tbody, tfoot}) {
+  constructor({pageTitle, listTitle, searchPlaceholder, listActions, searchAction, thead, tbody, tfoot, totalCol}) {
     super()
 
     this.pageTitle = pageTitle
     this.listTitle = listTitle
+    this.totalCol = totalCol
     this.searchPlaceholder = searchPlaceholder
     this.searchAction = searchAction
     this.listActions = listActions
@@ -94,7 +95,7 @@ export class BaseList extends Component {
     if(!this.tbody || (!this.state.objects || this.state.objects.length === 0)) {
       return(
         <tr>
-          <td colSpan="5">
+          <td colSpan={this.totalCol}>
             <div className="flex justify-center">
               <span className="warning-box">Ops.. Nenhum resultado encontrado.</span>
             </div>

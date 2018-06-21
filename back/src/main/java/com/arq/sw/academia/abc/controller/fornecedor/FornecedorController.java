@@ -7,6 +7,7 @@ import com.arq.sw.academia.abc.service.fornecedor.AtualizarFornecedorService;
 import com.arq.sw.academia.abc.service.fornecedor.CadastrarFornecedorService;
 import com.arq.sw.academia.abc.service.fornecedor.ConsultarFornecedorService;
 import com.arq.sw.academia.abc.service.fornecedor.RemoverFornecedorService;
+import com.arq.sw.academia.abc.service.fornecedor.ListarFornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/rest/fornecedor")
@@ -32,6 +35,9 @@ public class FornecedorController implements FornecedorControllerContract {
 
     @Autowired
     private RemoverFornecedorService removerFornecedorService;
+
+    @Autowired
+    private ListarFornecedorService listarFornecedorService;
 
     @Override
     @PostMapping
@@ -53,7 +59,13 @@ public class FornecedorController implements FornecedorControllerContract {
 
     @Override
     @DeleteMapping("/{id}")
-    public FornecedorDTO remover(Long id) {
+    public FornecedorDTO remover(@PathVariable("id") Long id) {
         return removerFornecedorService.remover(id);
+    }
+
+    @Override
+    @GetMapping
+    public List<FornecedorDTO> listar() {
+        return listarFornecedorService.listar();
     }
 }

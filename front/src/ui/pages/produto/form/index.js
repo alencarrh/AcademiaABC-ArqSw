@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router'
 import { BaseForm } from 'am-base'
 import { ErrorHelper } from 'am-helpers'
-import { Campanha } from 'am-models'
+import { Produto } from 'am-models'
 import {
   AmButton,
   AmImage,
@@ -11,7 +11,7 @@ import {
 } from 'am-components'
 import {
   ProdutoService,
-  ClienteService,
+  FornecedorService,
   ToastrService
 } from 'am-services'
 
@@ -22,7 +22,6 @@ export class ProdutoForm extends BaseForm {
       formTitle: 'Cadastrar nova campanha',
       formActions: () => (
         <div className="form__actions">
-          { this.renderPublishButton() }
           <AmButton variants="button--primary" disabled={!this.isFormValid()} onClick={() => this.saveAction()}>{ AmImage.ICONS.Save }Salvar</AmButton>
         </div>
       )
@@ -30,49 +29,42 @@ export class ProdutoForm extends BaseForm {
 
     this.state = {
       id: null,
-      clienteId: '',
       nome: '',
-      titulo: '',
-      tituloPagina: '',
-      codGoogleAnalytics: '',
-      dominioCampanha: '',
-      remetentePadrao: '',
-      emailPadrao: '',
-      clientes: [],
-      adminName: '',
-      adminEmail: '',
-      administradores: [],
-      fireRedirect: false,
-      validFields: {
-        clienteId: false,
-        nome: false,
-        titulo: false,
-        dominioCampanha: false
-      }
+      descricao: '',
+      preco: '',
+      qtdEstoque: '',
+      tipo: '',
+      idFornecedor: null,
+      fornecedores: [],
+      fireRedirect: false
     }
 
     this.produtoService = new ProdutoService()
-    this.clienteService = new ClienteService()
+    this.fornecedorService = new FornecedorService()
+  }
 
-    this.clienteService.get()
-      .then(clientes => {
-        this.setState({ clientes }, this.setEditForm)
-      })
-      .catch((err) => {
-        ErrorHelper.handleError(err)
+  componentWillMount() {
+    this.getFornecedores()
+  }
+
+  getFornecedores() {
+    this.fornecedorService.get()
+      .then(result => {
+        this.setState({
+          fornecedores: result
+        })
+
+        this.setEditForm()
       })
   }
 
   setEditForm() {
-    const campanha = this.props.location.campanha
+    const produto = this.props.location.produto
 
-    if (campanha) {
-      this.formTitle = 'Editar Campanha'
-      let validFields = this.state.validFields
-      validFields['clienteId'] = (campanha.clienteId !== '')
-      campanha['validFields'] = validFields
-
-      this.setState(this.props.location.campanha)
+    if (produto) {
+      this.formTitle = 'Editar Produto'
+      produto.idFornecedor = produto.fornecedor.id
+      this.setState(this.props.location.produto)
     }
   }
 
@@ -80,79 +72,36 @@ export class ProdutoForm extends BaseForm {
     return this.state.id !== null
   }
 
-  onEventChange(event, valid) {
-    let validation = this.state.validFields
-    let model = {}
-
-    model[event.target.id] = event.target.value
-    validation[event.target.id] = valid
-    model.validFields = validation
-
-    this.setState(model)
-  }
 
   onInputChange(id, value, valid = true) {
-    let validation = this.state.validFields
     let model = {}
 
     model[id] = value
-    validation[id] = valid
-    model.validFields = validation
 
     this.setState(model)
   }
 
-  addAdministrator() {
-    let admins = this.state.administradores
-    let name = this.state.adminName
-    let email = this.state.adminEmail
-
-    if (!name || !email) {
-      ToastrService.info('Atenção!', 'Informe nome e e-mail do administrador')
-      return;
-    }
-
-    admins.push({
-      nome: name,
-      email: email
-    })
-
-    this.setState({
-      administradores: admins,
-      adminName: '',
-      adminEmail: ''
-    })
-  }
-
-  removeAdministrator(key) {
-    this.state.administradores.splice(key, 1)
-
-    this.setState({
-      administradores: this.state.administradores
-    })
-  }
-
   isFormValid() {
-    let validFields = this.state.validFields
-    let isValid = true
-
-    Object.keys(validFields).map(function (key) {
-      return isValid = isValid ? validFields[key] : isValid
-    })
-
-    return isValid
+    return (
+      this.state.nome &&
+      this.state.descricao && 
+      this.state.preco &&
+      this.state.qtdEstoque && 
+      this.state.tipo &&
+      this.state.idFornecedor
+    )
   }
 
   saveAction() {
     if (this.isFormValid()) {
-      let campanha = new Campanha(this.state)
+      let produto = new Produto(this.state)
 
       super.setIsLoading(true)
 
-      this.campanhaService.save(campanha)
+      this.produtoService.save(produto)
         .then(() => {
           super.setIsLoading(false)
-          ToastrService.success('Feito!', 'Campanha salva com sucesso!')
+          ToastrService.success('Feito!', 'Produto salvo com sucesso!')
           this.setState({ fireRedirect: true })
         })
         .catch(err => {
@@ -166,20 +115,20 @@ export class ProdutoForm extends BaseForm {
     return super.render(
       <form>
         <fieldset className="fieldset">
-          <legend>Cliente</legend>
+          <legend>Fornecedor</legend>
 
           <div className="form-group">
             <div className="input-group">
-              <select required id="clienteId" value={this.state.clienteId} onChange={(e) => this.onEventChange(e, e.target.value !== '')}>
-                <option value="" disabled selected>Escolha um cliente</option>
+              <select required id="idFornecedor" value={this.state.idFornecedor} onChange={(e) => this.onInputChange(e.target.id, e.target.value)}>
+                <option value="" disabled selected>Escolha um fornecedor</option>
 
                 {
-                  this.state.clientes.map((obj, key) => {
+                  this.state.fornecedores.map((obj, key) => {
                     return <option key={key} value={obj.id}>{obj.nome}</option>
                   })
                 }
               </select>
-              <label htmlFor="clienteId">Nome do Cliente</label>
+              <label htmlFor="idFornecedor">Nome do Fornecedor</label>
             </div>
           </div>
         </fieldset>
@@ -191,113 +140,49 @@ export class ProdutoForm extends BaseForm {
             <AmInputText
               required
               id="nome"
-              label="Nome da Campanha"
-              placeholder="Informe o nome da campanha"
+              label="Nome"
+              placeholder="Informe o nome do produto"
               value={this.state.nome}
               onChange={(id, value, valid) => this.onInputChange(id, value, valid)}/>
 
             <AmInputText
-              id="tituloPagina"
-              label="Título da Página"
-              placeholder="Informe o título da página"
-              value={this.state.tituloPagina}
+              id="descricao"
+              label="Descrição"
+              placeholder="Informe a descrição do produto"
+              value={this.state.descricao}
               onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
           </div>
 
           <div className="form-group">
             <AmInputText
               required
-              id="titulo"
-              label="Título da Campanha"
-              placeholder="Informe o título da campanha"
-              value={this.state.titulo}
+              id="preco"
+              label="Preço"
+              placeholder="Informe o preço do produto"
+              value={this.state.preco}
               onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
 
             <AmInputText
-              id="codGoogleAnalytics"
-              label="Código Google Analytics"
-              placeholder="Informe o código do Google Analytics"
-              value={this.state.codGoogleAnalytics}
+              id="qtdEstoque"
+              label="Quantidade em Estoque"
+              placeholder="Informe a quantidade em estoque"
+              value={this.state.qtdEstoque}
               onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
           </div>
-        </fieldset>
-
-        <fieldset className="fieldset">
-          <legend>Domínios</legend>
 
           <div className="form-group">
             <AmInputText
               required
-              id="dominioCampanha"
-              label="Domínio da Campanha"
-              placeholder="Informe o domínio da campanha"
-              value={this.state.dominioCampanha}
-              onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
-          </div>
-
-        </fieldset>
-
-        <fieldset className="fieldset">
-          <legend>E-mail</legend>
-
-          <div className="form-group">
-            <AmInputText
-              id="remetentePadrao"
-              label="Nome do Remetente Padrão"
-              placeholder="Informe o nome do remetente padrão"
-              value={this.state.remetentePadrao}
-              onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
-
-            <AmInputText
-              id="emailPadrao"
-              type="email"
-              label="E-mail Padrão da Campanha"
-              placeholder="Informe o email padrão da campanha"
-              value={this.state.emailPadrao}
+              id="tipo"
+              label="Tipo"
+              placeholder="Informe o tipo do produto"
+              value={this.state.tipo}
               onChange={(id, value, valid) => this.onInputChange(id, value, valid)} />
           </div>
         </fieldset>
 
-        <fieldset className="fieldset">
-          <legend>E-mail Administradores</legend>
-
-          <div className="form-group">
-              <AmInputText
-                required
-                label="Nome do Administrador"
-                type="text"
-                id="adminName"
-                placeholder="Informe o nome do administrador"
-                value={this.state.adminName}
-                onChange={(id, value, valid) => this.onInputChange(id, value, valid)}  />
-
-                <AmInputText
-                  required
-                  type="email"
-                  id="adminEmail"
-                  label="E-mail do Administrador"
-                  placeholder="Informe o e-mail do administrador"
-                  value={this.state.adminEmail}
-                  onChange={(id, value, valid) => this.onInputChange(id, value, valid)}  />
-                <div className="form__links">
-                  <a className="secundary-link" onClick={() => this.addAdministrator()}>Adicionar</a>
-                </div>
-              </div>
-
-          <ul>
-            {
-              this.state.administradores.map((obj, key) => {
-                return (
-                  <li key={ key }>
-                    { obj.nome } <small>({ obj.email })</small> - <a className="secundary-link" onClick={ (e) => this.removeAdministrator(key) }>Remover</a>
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </fieldset>
         {
-          this.state.fireRedirect && <Redirect to="/campanha" />
+          this.state.fireRedirect && <Redirect to="/produto" />
         }
       </form>
     )
