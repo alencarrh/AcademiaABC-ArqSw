@@ -43,8 +43,7 @@ export class UsuarioForm extends BaseForm {
 
   setEditForm() {
     const usuario = this.props.location.usuario
-    debugger
-
+    
     if(usuario) {
       this.formTitle = 'Editar Usuário'
 
