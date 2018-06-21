@@ -11,7 +11,7 @@ export class AmSidenav extends Component {
     return (
       <nav className="sidebar">
       	<div className="sidebar__user-info">
-      		<div className="sidebar__user-info__avatar" style={{backgroundImage: 'url(http://nerdtec.net/wp-content/uploads/2016/07/birl-600x330.jpg)'}}></div>
+      		<div className="sidebar__user-info__avatar" style={{backgroundImage: 'url(https://i.imgur.com/Pe249ww.png)'}}></div>
       		Olá, Bambam
       	</div>
 
