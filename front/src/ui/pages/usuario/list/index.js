@@ -131,7 +131,7 @@ export class UsuarioList extends BaseList {
       <tr key={ key }>
         <td>{ usuario.nome }</td>
         <td>{ usuario.cpf }</td>
-        <td>{ usuario.dataNascimento.reverse().join('-') }</td>
+        <td>{ usuario.dataNascimento.reverse().join('/') }</td>
         <td className="list__content__table-action">
           <Link to={link}>
             <AmButton variants="button--icon-table">{AmImage.ICONS.Edit}</AmButton>

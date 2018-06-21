@@ -14,7 +14,7 @@ export class AmMain extends Component {
             )
           }
 
-          <Redirect from="/" to="/produtos" />
+          <Redirect from="/" to="/produto" />
 
         </Switch>
       </section>
