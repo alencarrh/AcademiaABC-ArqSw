@@ -158,7 +158,7 @@ export class FornecedorList extends BaseList {
   onActions() {
     return(
       <div className="list__actions-buttons">
-        <Link to='/fornecedor/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo fornecedor</AmButton></Link>
+        <Link to='/fornecedor/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo Fornecedor</AmButton></Link>
       </div>
     )
   }

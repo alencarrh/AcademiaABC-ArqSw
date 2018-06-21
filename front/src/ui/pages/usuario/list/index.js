@@ -152,7 +152,7 @@ export class UsuarioList extends BaseList {
   onActions() {
     return(
       <div className="list__actions-buttons">
-        <Link to='/usuario/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo usuário</AmButton></Link>
+        <Link to='/usuario/new'><AmButton variants="button--primary">{ AmImage.ICONS.Add } Novo Usuário</AmButton></Link>
       </div>
     )
   }
